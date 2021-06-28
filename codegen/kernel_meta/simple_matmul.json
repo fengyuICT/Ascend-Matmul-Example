@@ -1,0 +1,15 @@
+{
+    "binFileName":"simple_matmul",
+    "binFileSuffix":".o",
+    "blockDim":1,
+    "kernelName":"simple_matmul__kernel0",
+    "magic":"RT_DEV_BINARY_MAGIC_ELF",
+    "opParaSize":0,
+    "parameters":[
+        0,
+        0,
+        0,
+        0
+    ],
+    "sha256":"714fd86c692c695379515fabb859e642e041ec795ae5044767067f94e88e9172"
+}

@@ -1,0 +1,166 @@
+[{
+    "cce_full_path": "./kernel_meta/simple_matmul.cce", 
+    "cce_line2loc": [
+      {
+        "cce_line": 33, 
+        "loc": [
+          "matmul_tik.py", 
+          "23"
+        ]
+      }, 
+      {
+        "cce_line": 34, 
+        "loc": [
+          "matmul_tik.py", 
+          "24"
+        ]
+      }, 
+      {
+        "cce_line": 35, 
+        "loc": [
+          "matmul_tik.py", 
+          "31"
+        ]
+      }, 
+      {
+        "cce_line": 36, 
+        "loc": [
+          "matmul_tik.py", 
+          "31"
+        ]
+      }, 
+      {
+        "cce_line": 37, 
+        "loc": [
+          "matmul_tik.py", 
+          "25"
+        ]
+      }, 
+      {
+        "cce_line": 38, 
+        "loc": [
+          "matmul_tik.py", 
+          "32"
+        ]
+      }, 
+      {
+        "cce_line": 39, 
+        "loc": [
+          "matmul_tik.py", 
+          "35"
+        ]
+      }, 
+      {
+        "cce_line": 40, 
+        "loc": [
+          "matmul_tik.py", 
+          "28"
+        ]
+      }, 
+      {
+        "cce_line": 41, 
+        "loc": [
+          "matmul_tik.py", 
+          "29"
+        ]
+      }, 
+      {
+        "cce_line": 42, 
+        "loc": [
+          "matmul_tik.py", 
+          "29"
+        ]
+      }, 
+      {
+        "cce_line": 43, 
+        "loc": [
+          "matmul_tik.py", 
+          "29"
+        ]
+      }, 
+      {
+        "cce_line": 44, 
+        "loc": [
+          "matmul_tik.py", 
+          "31"
+        ]
+      }, 
+      {
+        "cce_line": 45, 
+        "loc": [
+          "matmul_tik.py", 
+          "31"
+        ]
+      }, 
+      {
+        "cce_line": 46, 
+        "loc": [
+          "matmul_tik.py", 
+          "31"
+        ]
+      }, 
+      {
+        "cce_line": 47, 
+        "loc": [
+          "matmul_tik.py", 
+          "31"
+        ]
+      }, 
+      {
+        "cce_line": 48, 
+        "loc": [
+          "matmul_tik.py", 
+          "31"
+        ]
+      }, 
+      {
+        "cce_line": 49, 
+        "loc": [
+          "matmul_tik.py", 
+          "31"
+        ]
+      }, 
+      {
+        "cce_line": 50, 
+        "loc": [
+          "matmul_tik.py", 
+          "31"
+        ]
+      }, 
+      {
+        "cce_line": 51, 
+        "loc": [
+          "matmul_tik.py", 
+          "32"
+        ]
+      }, 
+      {
+        "cce_line": 52, 
+        "loc": [
+          "matmul_tik.py", 
+          "32"
+        ]
+      }, 
+      {
+        "cce_line": 53, 
+        "loc": [
+          "matmul_tik.py", 
+          "32"
+        ]
+      }, 
+      {
+        "cce_line": 54, 
+        "loc": [
+          "matmul_tik.py", 
+          "32"
+        ]
+      }, 
+      {
+        "cce_line": 55, 
+        "loc": [
+          "matmul_tik.py", 
+          "32"
+        ]
+      }
+    ]
+  }]

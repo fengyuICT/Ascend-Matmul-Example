@@ -1,0 +1,59 @@
+#ifdef __CCE_KT_TEST__
+#define __aicore__ 
+#else
+#define __aicore__ [aicore]
+#endif
+
+
+#define VERIFY_L2Buffer_OK(l2DataIndex) \
+	(0x01 & (((0xFF)&(~l2_in_main)) >> (l2DataIndex)))
+
+extern "C" __global__ __aicore__ void simple_matmul__kernel0(__gm__ uint8_t* __restrict__ A_gm, __gm__ uint8_t* __restrict__ B_gm, __gm__ uint8_t* __restrict__ C_gm, int32_t dummy_arg,int64_t index0, uint64_t offset0, int64_t index1, uint64_t offset1, int64_t index2, uint64_t offset2, int64_t index3, uint64_t offset3) {
+  if (index0 >= 0) {
+    if (VERIFY_L2Buffer_OK(index0)) {
+      A_gm = (__gm__ uint8_t*)((uint64_t)l2_vaddr_base + offset0);
+    }
+  }
+  if (index1 >= 0) {
+    if (VERIFY_L2Buffer_OK(index1)) {
+      B_gm = (__gm__ uint8_t*)((uint64_t)l2_vaddr_base + offset1);
+    }
+  }
+  if (index2 >= 0) {
+    if (VERIFY_L2Buffer_OK(index2)) {
+      C_gm = (__gm__ uint8_t*)((uint64_t)l2_vaddr_base + offset2);
+    }
+  }
+  if (index3 >= 0) {
+    if (VERIFY_L2Buffer_OK(index3)) {
+      dummy_arg = dummy_arg;
+    }
+  }
+set_padding(0);
+__cbuf__   uint8_t* l1_matrix_a = (__cbuf__  uint8_t *)get_imm(0);
+  __cbuf__   uint8_t* l1_matrix_a1 = (__cbuf__  uint8_t *)get_imm(512);
+  __cb__   uint8_t* l1_matrix_aL0B = (__cb__  uint8_t *)get_imm(0);
+  __ca__   uint8_t* l1_matrix_aL0A = (__ca__  uint8_t *)get_imm(0);
+  __cc__   uint8_t* output_l0c = (__cc__  uint8_t *)get_imm(0);
+  __ubuf__   uint8_t* fixpipe_ub_tmp = (__ubuf__  uint8_t *)get_imm(0);
+  // "aicore arch: Ascend310"
+  copy_gm_to_cbuf(((__cbuf__ half *)l1_matrix_a), ((__gm__ half *)A_gm), 0, 1, 16, 0, 0, PAD_NONE);
+  copy_gm_to_cbuf(((__cbuf__ half *)l1_matrix_a1), ((__gm__ half *)B_gm), 0, 1, 16, 0, 0, PAD_NONE);
+  set_flag(PIPE_MTE2, PIPE_MTE1, EVENT_ID0);
+  wait_flag(PIPE_MTE2, PIPE_MTE1, EVENT_ID0);
+  load_cbuf_to_cb(((__cb__ half *)l1_matrix_aL0B), ((__cbuf__ half *)l1_matrix_a1), 0, 1, 1, 0, 0);
+  load_cbuf_to_ca(((__ca__ half *)l1_matrix_aL0A), ((__cbuf__ half *)l1_matrix_a), 0, 1, 1, 0, 0);
+  set_flag(PIPE_MTE1, PIPE_M, EVENT_ID0);
+  wait_flag(PIPE_MTE1, PIPE_M, EVENT_ID0);
+  mad(((__cc__ float *)output_l0c), ((__ca__ half *)l1_matrix_aL0A), ((__cb__ half *)l1_matrix_aL0B), 16, 16, 16, 1);
+  set_flag(PIPE_M, PIPE_V, EVENT_ID0);
+  wait_flag(PIPE_M, PIPE_V, EVENT_ID0);
+  copy_matrix_cc_to_ubuf(((__ubuf__ float *)fixpipe_ub_tmp), ((__cc__ float *)output_l0c), 0, 1, 1, 0, 0, CRMODE_NONE);
+  set_flag(PIPE_V, PIPE_MTE3, EVENT_ID0);
+  wait_flag(PIPE_V, PIPE_MTE3, EVENT_ID0);
+  copy_ubuf_to_gm(((__gm__ float *)C_gm), ((__ubuf__ float *)fixpipe_ub_tmp), 0, 1, 32, 0, 0);
+  pipe_barrier(PIPE_ALL);
+pipe_barrier(PIPE_ALL);
+
+}
+
